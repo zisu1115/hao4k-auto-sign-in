@@ -34,7 +34,7 @@ jobs:
     # Run auto sign in script of hao4k.cn
     - name: Hao4k auto sign in
       env:
-        username: ${{ secrets.HAO4K_USERNAME }}
-        password: ${{ secrets.HAO4K_PASSWORD }}
+        HAO4K_USERNAME: ${{ secrets.HAO4K_USERNAME }}
+        HAO4K_PASSWORD: ${{ secrets.HAO4K_PASSWORD }}
       run: python autosignin.py
         
