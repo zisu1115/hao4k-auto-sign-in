@@ -2,9 +2,9 @@
 
 name: CI
 
-# Controls when the action will run. Triggers the workflow on push or pull request
+# Controls when the action will run. Triggers the workflow on push request
 # events but only for the master branch
-# trigger everyday at 7:00AM CST
+# triggers everyday at 7:00AM CST
 on:
   push:
     branches: 
@@ -24,7 +24,7 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
-    # Setup python 3.x environment and requests
+    # Setup python 3.x environment and requests package
     - name: Set python
       uses: actions/setup-python@v2
       with:
