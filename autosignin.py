@@ -1,4 +1,5 @@
 import requests
+import os
 
 username = os.environ["HAO4K_USERNAME"]
 password = os.environ["HAO4K_PASSWORD"]
