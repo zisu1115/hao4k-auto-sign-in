@@ -35,7 +35,7 @@ def run(form_data):
 
     login_resp = s.post(login_url, data=form_data)
     test_resp = s.get('https://www.hao4k.cn/k_misign-sign.html')
-    if 'PoplarChan' in test_resp.text:
+    if username in test_resp.text:
         print('login!')
     else:
         return('login failed!')
