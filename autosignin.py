@@ -5,6 +5,7 @@ import re
 
 username = os.environ["HAO4K_USERNAME"]
 password = os.environ["HAO4K_PASSWORD"]
+nickname = "PoplarChan"  #根据用户昵称作相应修改。
 
 user_url = "https://www.hao4k.cn/member.php?mod=logging&action=login&phonelogin=no"
 base_url = "https://www.hao4k.cn/"
@@ -35,21 +36,21 @@ def run(form_data):
 
     login_resp = s.post(login_url, data=form_data)
     test_resp = s.get('https://www.hao4k.cn/k_misign-sign.html')
-    if username in test_resp.text:
-        print('login!')
+    if nickname in test_resp.text:
+        print('Login succeed!')
     else:
-        return('login failed!')
+        return('Login failed!')
     signin_text = re.search('formhash=(.*?)"', test_resp.text)
     signin_resp = s.get(signin_url.format(formhash=signin_text.group(1)))
     test_resp = s.get('https://www.hao4k.cn/k_misign-sign.html')
     if '您的签到排名' in test_resp.text:
-        print('signin!')
+        print('Signin succeed!')
     else:
-        return('signin failed!')
+        return('Signin failed!')
 
 if __name__ == "__main__":
     signin_log = run(form_data)
     if signin_log == None:
-        print('Sign in automaticlly!')
+        print('Signin automaticlly!')
     else:
         print(signin_log)
