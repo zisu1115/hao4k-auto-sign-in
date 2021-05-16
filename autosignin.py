@@ -5,7 +5,6 @@ import re
 
 username = os.environ["HAO4K_USERNAME"]
 password = os.environ["HAO4K_PASSWORD"]
-nickname = "PoplarChan"  #根据用户昵称作相应修改。
 
 user_url = "https://www.hao4k.cn/member.php?mod=logging&action=login&phonelogin=no"
 base_url = "https://www.hao4k.cn/"
@@ -36,7 +35,7 @@ def run(form_data):
 
     login_resp = s.post(login_url, data=form_data)
     test_resp = s.get('https://www.hao4k.cn/k_misign-sign.html')
-    if nickname in test_resp.text:
+    if username in test_resp.text:
         print('Login succeed!')
     else:
         return('Login failed!')
