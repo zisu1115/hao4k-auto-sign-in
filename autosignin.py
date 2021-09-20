@@ -10,10 +10,6 @@ bot_token = os.environ["TG_BOT_TOKEN"]
 chat_id = os.environ["TG_CHAT_ID"]
 api_url = "https://api.telegram.org/bot%s/sendMessage" % (bot_token)
 send_message = "Server ERROR"
-params = {
-    'chat_id': chat_id,
-    'text': send_message
-}
 
 user_url = "https://www.hao4k.cn/member.php?mod=logging&action=login&phonelogin=no"
 headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36'}
@@ -65,6 +61,7 @@ if __name__ == "__main__":
     else:
         send_message = signin_log
         print(signin_log)
+    params = {'chat_id': chat_id,'text': send_message}
     r = requests.get(api_url, params=params)
     if r.status_code == requests.codes.ok:
         print("签到消息已发送至我的Telegram Bot。")
