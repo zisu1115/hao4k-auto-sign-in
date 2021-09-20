@@ -18,7 +18,7 @@
         - `TG_BOT_TOKEN` Telgram Bot的TOKEN
         - `TG_CHAT_ID` Telegram的Chat ID
     - 如何获取Telegram机器人的TOKEN和你的Chat ID下面会讲，也可以自行Google
-    - 修改任务执行时间，在[.github/workflows/ci.yml](https://github.com/bychen009/hao4k-auto-sign-in/blob/master/.github/workflows/ci.yml) line 13,找到`cron: '0 23 * * *'`表达式，修改其中的23为你想要的时间，注意这里是GMT时间，+8才是北京时间。[参考文档](https://docs.github.com/cn/actions/reference/events-that-trigger-workflows#scheduled-events)。
+    - 修改任务执行时间，在[.github/workflows/ci.yml](https://github.com/bychen009/hao4k-auto-sign-in/blob/master/.github/workflows/ci.yml) line 13,找到`cron: '0 23 * * *'`表达式，修改其中的23为你想要的时间，注意这里是GMT时间，+8才是北京时间,[参考文档](https://docs.github.com/cn/actions/reference/events-that-trigger-workflows#scheduled-events)。
 
 ## 注册Telegram机器人并获取TOKEN
 注册过程比较简单，在Telegram中与“机器人之父”聊天，即`@BotFather`这个账号。
@@ -34,3 +34,6 @@
 - 打开与`@getuseridbot`的会话
 - 点击/start
 - 得到你的Chat ID
+
+## 自动同步上游代码
+安装 Github App [Pull](https://github.com/apps/pull)， 将 fork 后的项目添加到 Repository access 列表中即可实现自动同步上游代码。

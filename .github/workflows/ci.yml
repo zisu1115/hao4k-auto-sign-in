@@ -37,5 +37,7 @@ jobs:
       env:
         HAO4K_USERNAME: ${{ secrets.HAO4K_USERNAME }}
         HAO4K_PASSWORD: ${{ secrets.HAO4K_PASSWORD }}
+        TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+        TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
       run: python autosignin.py
         
