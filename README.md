@@ -7,7 +7,7 @@
 - 支持签到结果消息推送至你的Telegram Bot。
 
 ## 使用方法
-- Fork本仓库
+- Fork本仓库；
 - 由于Hao4K个人账户信息需要保密，所以将其配置到仓库的`setting/secrets`下：
     - 在你Fork的仓库名下，单击`Settings`（设置）；
     - 在左侧栏单击`Secrets`（密码）；
@@ -30,7 +30,7 @@
 - 得到Bot的token，用于标识这个Bot
 - 打开与你Bot的会话，随意发送一个消息，比如`Hello`
 
-## 获取Chat ID
+## 获取Chat ID  
 - 打开与`@getuseridbot`的会话
 - 点击/start
 - 得到你的Chat ID
