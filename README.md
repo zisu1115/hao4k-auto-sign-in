@@ -1,6 +1,7 @@
 # Hao4K 网站自动签到脚本
 
-利用Github Actions功能实现Hao4K.cn网站自动签到，并将结果推送至Telegram。  
+利用Github Actions功能实现Hao4K.cn网站自动签到，并将结果推送至Telegram。   
+更新：由于网站近期新增了登陆验证码，目前功能受限，正在学习teaserOCR来进行识别。 
 
 ## 脚本功能
 - 每日上午7点定时执行签到功能。
