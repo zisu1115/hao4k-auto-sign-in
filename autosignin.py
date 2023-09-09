@@ -49,7 +49,7 @@ def run(form_data):
         return('Login failed!')
     signin_text = re.search('formhash=(.*?)"', login_resp.text)
     signin_post = s.get(signin_url.format(formhash=signin_text.group(1)), headers=headers)
-    print(s.status_code)
+    print(signin_post.status_code)
 
     signin_resp = s.get('https://www.4ksj.com/qiandao/', headers=headers)
     if '您的签到排名' in signin_resp.text:
