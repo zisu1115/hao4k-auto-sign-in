@@ -2,22 +2,24 @@ import requests
 import os
 import re
 
-
+# username and password are set on github secrets.
 username = os.environ["HAO4K_USERNAME"]
 password = os.environ["HAO4K_PASSWORD"]
 
+# TG 
 bot_token = os.environ["TG_BOT_TOKEN"]
 chat_id = os.environ["TG_CHAT_ID"]
+
 api_url = "https://api.telegram.org/bot%s/sendMessage" % (bot_token)
 send_message = "Server ERROR"
 
-user_url = "https://www.hao4k.cn/member.php?mod=logging&action=login&phonelogin=no"
+user_url = "https://www.4ksj.com//member.php?mod=logging&action=login"
 headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36'}
-base_url = "https://www.hao4k.cn/"
+base_url = "https://www.4ksj.com/"
 signin_url = "https://www.hao4k.cn/plugin.php?id=k_misign:sign&operation=qiandao&formhash={formhash}&format=empty"
 form_data = {
     'formhash': "",
-    'referer': "https://www.hao4k.cn/",
+    'referer': "https://www.4ksj.com/./",
     'username': username,
     'password': password,
     'questionid': "0",
@@ -34,20 +36,20 @@ def run(form_data):
             login_url = base_url + loginhash +inajax
             login_url =login_url.replace("amp;", "")
             print(login_url)
-    form_text =re.search('formhash=(.*?)\'', user_resp.text)
+    form_text =re.search('formhash" value="(.*?)"', user_resp.text)
     print(form_text.group(1))
     form_data['formhash'] = form_text.group(1)
     print(form_data)
 
     login_resp = s.post(login_url, data=form_data, headers=headers)
-    test_resp = s.get('https://www.hao4k.cn/k_misign-sign.html', headers=headers)
+    test_resp = s.get('https://www.4ksj.com/qiandao/', headers=headers)
     if username in test_resp.text:
         print('Login succeed!')
     else:
         return('Login failed!')
     signin_text = re.search('formhash=(.*?)"', test_resp.text)
     signin_resp = s.get(signin_url.format(formhash=signin_text.group(1)), headers=headers)
-    test_resp = s.get('https://www.hao4k.cn/k_misign-sign.html', headers=headers)
+    test_resp = s.get('https://www.4ksj.com/qiandao/', headers=headers)
     if '您的签到排名' in test_resp.text:
         print('Signin succeed!')
     else:
@@ -56,7 +58,7 @@ def run(form_data):
 if __name__ == "__main__":
     signin_log = run(form_data)
     if signin_log is None:
-        send_message = "hao4K每日签到成功！"
+        send_message = "hao4K每日签到成功!"
         print('Signin automaticlly!')
     else:
         send_message = signin_log
